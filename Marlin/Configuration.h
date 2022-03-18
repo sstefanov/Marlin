@@ -19,6 +19,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
+
+ /*
+  * Stefan Stefanov 2022
+  * added 128x64 t6963 LCD display
+  *
+  */
 #pragma once
 
 /**
@@ -120,7 +126,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 250000
+#define BAUDRATE 115200
 //#define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
 
 /**
@@ -2208,6 +2214,8 @@
 // Note: Usually sold with a white PCB.
 //
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
+
+#define U8GLIB_T6963
 
 //
 // GT2560 (YHCB2004) LCD Display

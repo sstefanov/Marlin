@@ -519,6 +519,12 @@
   #define LCD_BRIGHTNESS_MAX 250
 #endif
 
+#if ENABLED(U8GLIB_T6963)
+#define DOGLCD
+#define HAS_WIRED_LCD 1
+#define HAS_MARLINUI_U8GLIB 1
+#endif
+
 #if IS_ULTRA_LCD
   #define HAS_WIRED_LCD 1
   #if ENABLED(DOGLCD)
