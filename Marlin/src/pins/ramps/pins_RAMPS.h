@@ -533,10 +533,14 @@
     #define LCD_PINS_D5 29
     #define LCD_PINS_D6 27
     #define LCD_PINS_D7 25
+// encoder
+    #ifdef HAS_ENCODER_WHEEL
+      #define BTN_EN1 16
+      #define BTN_EN2 17
+      #define BTN_ENC 23
+#endif // RRD_SC
 
-#else
-
-#if ENABLED(CR10_STOCKDISPLAY)
+#elif ENABLED(CR10_STOCKDISPLAY)
 
 #define LCD_PINS_RS EXP1_04_PIN
 #define LCD_PINS_ENABLE EXP1_03_PIN
@@ -591,208 +595,210 @@
 //#define SHIFT_EN_PIN         EXP1_08_PIN
 #endif
 
-#endif
+//#endif
 
-#if ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
-#define BTN_ENC_EN LCD_PINS_D7 // Detect the presence of the encoder
-#endif
+  #if ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
+  #define BTN_ENC_EN LCD_PINS_D7 // Detect the presence of the encoder
+  #endif
 
-//
-// LCD Display input pins
-//
-#if IS_NEWPANEL
+  //
+  // LCD Display input pins
+  //
+  #if IS_NEWPANEL
 
-#if IS_RRD_SC
+    #if IS_RRD_SC
 
-#define BEEPER_PIN EXP1_10_PIN
+      #define BEEPER_PIN EXP1_10_PIN
 
-#if ENABLED(CR10_STOCKDISPLAY)
-#define BTN_EN1 EXP1_08_PIN
-#define BTN_EN2 EXP1_06_PIN
-#else
-#define BTN_EN1 EXP2_08_PIN
-#define BTN_EN2 EXP2_06_PIN
-#endif
+      #if ENABLED(CR10_STOCKDISPLAY)
+        #define BTN_EN1 EXP1_08_PIN
+        #define BTN_EN2 EXP1_06_PIN
+      #else
+        #ifndef BTN_EN1
+          #define BTN_EN1 EXP2_08_PIN
+        #endif
+        #ifndef BTN_EN2
+          #define BTN_EN2 EXP2_06_PIN
+        #endif
+      #endif
 
-#define BTN_ENC EXP1_09_PIN
-#ifndef SD_DETECT_PIN
-#define SD_DETECT_PIN EXP2_04_PIN
-#endif
-#ifndef KILL_PIN
-#define KILL_PIN EXP2_03_PIN
-#endif
+      #define BTN_ENC EXP1_09_PIN
+      #ifndef SD_DETECT_PIN
+        #define SD_DETECT_PIN EXP2_04_PIN
+      #endif
+      #ifndef KILL_PIN
+        #define KILL_PIN EXP2_03_PIN
+      #endif
 
-#if ENABLED(BQ_LCD_SMART_CONTROLLER)
-#define LCD_BACKLIGHT_PIN AUX4_08_PIN
-#endif
+      #if ENABLED(BQ_LCD_SMART_CONTROLLER)
+        #define LCD_BACKLIGHT_PIN AUX4_08_PIN
+      #endif
 
-#elif ENABLED(REPRAPWORLD_GRAPHICAL_LCD)
+    #elif ENABLED(REPRAPWORLD_GRAPHICAL_LCD)
 
-#define BTN_EN1 64
-#define BTN_EN2 59
-#define BTN_ENC 63
-#define SD_DETECT_PIN 42
+      #define BTN_EN1 64
+      #define BTN_EN2 59
+      #define BTN_ENC 63
+      #define SD_DETECT_PIN 42
 
-#elif ENABLED(LCD_I2C_PANELOLU2)
+    #elif ENABLED(LCD_I2C_PANELOLU2)
 
-#define BTN_EN1 AUX4_04_PIN
-#define BTN_EN2 AUX4_06_PIN
-#define BTN_ENC AUX4_03_PIN
-#define LCD_SDSS SDSS
-#define KILL_PIN EXP2_03_PIN
+      #define BTN_EN1 AUX4_04_PIN
+      #define BTN_EN2 AUX4_06_PIN
+      #define BTN_ENC AUX4_03_PIN
+      #define LCD_SDSS SDSS
+      #define KILL_PIN EXP2_03_PIN
 
-#elif ENABLED(LCD_I2C_VIKI)
+    #elif ENABLED(LCD_I2C_VIKI)
 
-#define BTN_EN1 40 // https://files.panucatt.com/datasheets/viki_wiring_diagram.pdf explains 40/42.
-#define BTN_EN2 42
-#define BTN_ENC -1
+      #define BTN_EN1 40 // https://files.panucatt.com/datasheets/viki_wiring_diagram.pdf explains 40/42.
+      #define BTN_EN2 42
+      #define BTN_ENC -1
 
-#define LCD_SDSS SDSS
-#define SD_DETECT_PIN EXP2_04_PIN
+      #define LCD_SDSS SDSS
+      #define SD_DETECT_PIN EXP2_04_PIN
 
-#elif ANY(VIKI2, miniVIKI)
+    #elif ANY(VIKI2, miniVIKI)
 
-#define DOGLCD_CS 45
-#define DOGLCD_A0 44
-#define LCD_SCREEN_ROT_180
+      #define DOGLCD_CS 45
+      #define DOGLCD_A0 44
+      #define LCD_SCREEN_ROT_180
 
-#define BEEPER_PIN EXP2_06_PIN
-#define STAT_LED_RED_PIN 32
-#define STAT_LED_BLUE_PIN EXP1_09_PIN
+      #define BEEPER_PIN EXP2_06_PIN
+      #define STAT_LED_RED_PIN 32
+      #define STAT_LED_BLUE_PIN EXP1_09_PIN
 
-#define BTN_EN1 22
-#define BTN_EN2 7
-#define BTN_ENC 39
+      #define BTN_EN1 22
+      #define BTN_EN2 7
+      #define BTN_ENC 39
 
-#define SD_DETECT_PIN -1 // Pin 49 for display SD interface, 72 for easy adapter board
-#define KILL_PIN EXP2_08_PIN
+      #define SD_DETECT_PIN -1 // Pin 49 for display SD interface, 72 for easy adapter board
+      #define KILL_PIN EXP2_08_PIN
 
-#elif ENABLED(ELB_FULL_GRAPHIC_CONTROLLER)
+    #elif ENABLED(ELB_FULL_GRAPHIC_CONTROLLER)
 
-#define DOGLCD_CS EXP1_03_PIN
-#define DOGLCD_A0 EXP1_04_PIN
+      #define DOGLCD_CS EXP1_03_PIN
+      #define DOGLCD_A0 EXP1_04_PIN
 
-#define BEEPER_PIN EXP1_06_PIN
-#define LCD_BACKLIGHT_PIN EXP2_06_PIN
+      #define BEEPER_PIN EXP1_06_PIN
+      #define LCD_BACKLIGHT_PIN EXP2_06_PIN
 
-#define BTN_EN1 EXP1_09_PIN
-#define BTN_EN2 EXP1_10_PIN
-#define BTN_ENC EXP2_08_PIN
+      #define BTN_EN1 EXP1_09_PIN
+      #define BTN_EN2 EXP1_10_PIN
+      #define BTN_ENC EXP2_08_PIN
 
-#define LCD_SDSS SDSS
-#define SD_DETECT_PIN EXP2_04_PIN
-#define KILL_PIN EXP2_03_PIN
+      #define LCD_SDSS SDSS
+      #define SD_DETECT_PIN EXP2_04_PIN
+      #define KILL_PIN EXP2_03_PIN
 
-#elif EITHER(MKS_MINI_12864, FYSETC_MINI_12864)
+    #elif EITHER(MKS_MINI_12864, FYSETC_MINI_12864)
 
-#define BEEPER_PIN EXP1_10_PIN
-#define BTN_ENC EXP1_09_PIN
-#ifndef SD_DETECT_PIN
-#define SD_DETECT_PIN EXP2_04_PIN
-#endif
+      #define BEEPER_PIN EXP1_10_PIN
+      #define BTN_ENC EXP1_09_PIN
+      #ifndef SD_DETECT_PIN
+        #define SD_DETECT_PIN EXP2_04_PIN
+      #endif
 
-#ifndef KILL_PIN
-#define KILL_PIN EXP2_03_PIN
-#endif
+      #ifndef KILL_PIN
+        #define KILL_PIN EXP2_03_PIN
+      #endif
 
-#if ENABLED(MKS_MINI_12864)
+      #if ENABLED(MKS_MINI_12864)
 
-#define DOGLCD_A0 EXP1_04_PIN
-#define DOGLCD_CS EXP1_05_PIN
+        #define DOGLCD_A0 EXP1_04_PIN
+        #define DOGLCD_CS EXP1_05_PIN
 
-// not connected to a pin
-#define LCD_BACKLIGHT_PIN -1 // 65 (MKS mini12864 can't adjust backlight by software!)
+        // not connected to a pin
+        #define LCD_BACKLIGHT_PIN -1 // 65 (MKS mini12864 can't adjust backlight by software!)
 
-#define BTN_EN1 EXP2_08_PIN
-#define BTN_EN2 EXP2_06_PIN
+        #define BTN_EN1 EXP2_08_PIN
+        #define BTN_EN2 EXP2_06_PIN
 
-#elif ENABLED(FYSETC_MINI_12864)
+      #elif ENABLED(FYSETC_MINI_12864)
 
-// From https://wiki.fysetc.com/Mini12864_Panel/?fbclid=IwAR1FyjuNdVOOy9_xzky3qqo_WeM5h-4gpRnnWhQr_O1Ef3h0AFnFXmCehK8
+        // From https://wiki.fysetc.com/Mini12864_Panel/?fbclid=IwAR1FyjuNdVOOy9_xzky3qqo_WeM5h-4gpRnnWhQr_O1Ef3h0AFnFXmCehK8
 
-#define DOGLCD_A0 EXP1_07_PIN
-#define DOGLCD_CS EXP1_08_PIN
+        #define DOGLCD_A0 EXP1_07_PIN
+        #define DOGLCD_CS EXP1_08_PIN
 
-#define BTN_EN1 EXP2_06_PIN
-#define BTN_EN2 EXP2_08_PIN
+        #define BTN_EN1 EXP2_06_PIN
+        #define BTN_EN2 EXP2_08_PIN
 
-//#define FORCE_SOFT_SPI                  // Use this if default of hardware SPI causes display problems
-//   results in LCD soft SPI mode 3, SD soft SPI mode 0
+        //#define FORCE_SOFT_SPI                  // Use this if default of hardware SPI causes display problems
+        //   results in LCD soft SPI mode 3, SD soft SPI mode 0
 
-#define LCD_RESET_PIN EXP1_06_PIN // Must be high or open for LCD to operate normally.
+        #define LCD_RESET_PIN EXP1_06_PIN // Must be high or open for LCD to operate normally.
 
-#if EITHER(FYSETC_MINI_12864_1_2, FYSETC_MINI_12864_2_0)
-#ifndef RGB_LED_R_PIN
-#define RGB_LED_R_PIN EXP1_05_PIN
-#endif
-#ifndef RGB_LED_G_PIN
-#define RGB_LED_G_PIN EXP1_04_PIN
-#endif
-#ifndef RGB_LED_B_PIN
-#define RGB_LED_B_PIN EXP1_03_PIN
-#endif
-#elif ENABLED(FYSETC_MINI_12864_2_1)
-#define NEOPIXEL_PIN EXP1_05_PIN
-#endif
+        #if EITHER(FYSETC_MINI_12864_1_2, FYSETC_MINI_12864_2_0)
+          #ifndef RGB_LED_R_PIN
+            #define RGB_LED_R_PIN EXP1_05_PIN
+          #endif
+          #ifndef RGB_LED_G_PIN
+            #define RGB_LED_G_PIN EXP1_04_PIN
+          #endif
+          #ifndef RGB_LED_B_PIN
+            #define RGB_LED_B_PIN EXP1_03_PIN
+          #endif
+        #elif ENABLED(FYSETC_MINI_12864_2_1)
+          #define NEOPIXEL_PIN EXP1_05_PIN
+        #endif
+      #endif
+    #elif ENABLED(MINIPANEL)
 
-#endif
+      #define BEEPER_PIN 42
+      // not connected to a pin
+      #define LCD_BACKLIGHT_PIN 65 // backlight LED on A11/D65
 
-#elif ENABLED(MINIPANEL)
+      #define DOGLCD_A0 44
+      #define DOGLCD_CS 66
 
-#define BEEPER_PIN 42
-// not connected to a pin
-#define LCD_BACKLIGHT_PIN 65 // backlight LED on A11/D65
+      #define BTN_EN1 40
+      #define BTN_EN2 63
+      #define BTN_ENC 59
 
-#define DOGLCD_A0 44
-#define DOGLCD_CS 66
+      #define SD_DETECT_PIN EXP2_04_PIN
+      #define KILL_PIN 64
 
-#define BTN_EN1 40
-#define BTN_EN2 63
-#define BTN_ENC 59
+    #elif ENABLED(ZONESTAR_LCD)
 
-#define SD_DETECT_PIN EXP2_04_PIN
-#define KILL_PIN 64
+      #define ADC_KEYPAD_PIN 12
 
-#elif ENABLED(ZONESTAR_LCD)
+    #elif ENABLED(AZSMZ_12864)
 
-#define ADC_KEYPAD_PIN 12
+      // Pins only defined for RAMPS_SMART currently
 
-#elif ENABLED(AZSMZ_12864)
+    #elif ENABLED(G3D_PANEL)
 
-// Pins only defined for RAMPS_SMART currently
+      #define BEEPER_PIN EXP2_06_PIN
 
-#elif ENABLED(G3D_PANEL)
+      #define SD_DETECT_PIN EXP2_04_PIN
+      #define KILL_PIN EXP2_03_PIN
 
-#define BEEPER_PIN EXP2_06_PIN
+      #define BTN_EN1 EXP1_10_PIN
+      #define BTN_EN2 EXP1_09_PIN
+      #define BTN_ENC EXP2_08_PIN
 
-#define SD_DETECT_PIN EXP2_04_PIN
-#define KILL_PIN EXP2_03_PIN
+    #elif IS_TFTGLCD_PANEL
 
-#define BTN_EN1 EXP1_10_PIN
-#define BTN_EN2 EXP1_09_PIN
-#define BTN_ENC EXP2_08_PIN
+      #define SD_DETECT_PIN EXP2_04_PIN
 
-#elif IS_TFTGLCD_PANEL
+    #else
 
-#define SD_DETECT_PIN EXP2_04_PIN
+      #define BEEPER_PIN EXP2_06_PIN
 
-#else
+      // Buttons are directly attached to AUX-2
+      #if ENABLED(PANEL_ONE)
+        #define BTN_EN1 59 // AUX2 PIN 3
+        #define BTN_EN2 63 // AUX2 PIN 4
+        #define BTN_ENC EXP2_04_PIN
+      #else
+        #define BTN_EN1 EXP1_10_PIN
+        #define BTN_EN2 EXP1_09_PIN
+        #define BTN_ENC EXP2_08_PIN
+      #endif
 
-#define BEEPER_PIN EXP2_06_PIN
-
-// Buttons are directly attached to AUX-2
-#if ENABLED(PANEL_ONE)
-#define BTN_EN1 59 // AUX2 PIN 3
-#define BTN_EN2 63 // AUX2 PIN 4
-#define BTN_ENC EXP2_04_PIN
-#else
-#define BTN_EN1 EXP1_10_PIN
-#define BTN_EN2 EXP1_09_PIN
-#define BTN_ENC EXP2_08_PIN
-#endif
-
-#endif
-#endif // IS_NEWPANEL
+    #endif
+  #endif // IS_NEWPANEL
 
 #endif // HAS_WIRED_LCD
 

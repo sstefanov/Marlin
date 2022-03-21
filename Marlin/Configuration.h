@@ -27,6 +27,11 @@
   */
 #pragma once
 
+/* definition to expand macro then apply to pragma message */
+#define VALUE_TO_STRING(x) #x
+#define VALUE(x) VALUE_TO_STRING(x)
+#define VAR_NAME_VALUE(var) #var "=" VALUE(var)
+
 /**
  * Configuration.h
  *
@@ -75,7 +80,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(S.Stefanov, T6963C with encoder)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -85,7 +90,7 @@
  * With this option Marlin will first show your custom screen followed
  * by the standard Marlin logo with version number and web URL.
  *
- * We encourage you to take advantage of this new feature and we also
+ * We encourage you to take advantage of this 3 feature and we also
  * respectfully request that you retain the unmodified Marlin boot screen.
  */
 
@@ -2181,8 +2186,8 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-//#define INDIVIDUAL_AXIS_HOMING_MENU
-//#define INDIVIDUAL_AXIS_HOMING_SUBMENU
+#define INDIVIDUAL_AXIS_HOMING_MENU
+#define INDIVIDUAL_AXIS_HOMING_SUBMENU
 
 //
 // SPEAKER/BUZZER
@@ -2214,8 +2219,6 @@
 // Note: Usually sold with a white PCB.
 //
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
-
-#define U8GLIB_T6963
 
 //
 // GT2560 (YHCB2004) LCD Display
@@ -2368,6 +2371,13 @@
 //
 // NOTE: If the LCD is unresponsive you may need to reverse the plugs.
 //
+
+// T6963 with u8glib 128x64 (DOGM)
+#define U8GLIB_T6963
+#define HAS_WIRED_LCD 1
+#define HAS_ENCODER_WHEEL 1
+#define IS_RRW_KEYPAD 1
+#define HAS_LCD_MENU 1
 
 //
 // RepRapDiscount FULL GRAPHIC Smart Controller
@@ -2973,11 +2983,11 @@
 // If the servo can't reach the requested position, increase it.
 #define SERVO_DELAY { 300 }
 
-// Only power servos during movement, otherwise leave off to prevent jitter
-//#define DEACTIVATE_SERVOS_AFTER_MOVE
+    // Only power servos during movement, otherwise leave off to prevent jitter
+    //#define DEACTIVATE_SERVOS_AFTER_MOVE
 
-// Edit servo angles with M281 and save to EEPROM with M500
-//#define EDITABLE_SERVO_ANGLES
+    // Edit servo angles with M281 and save to EEPROM with M500
+    //#define EDITABLE_SERVO_ANGLES
 
-// Disable servo with M282 to reduce power consumption, noise, and heat when not in use
-//#define SERVO_DETACH_GCODE
+    // Disable servo with M282 to reduce power consumption, noise, and heat when not in use
+    //#define SERVO_DETACH_GCODE

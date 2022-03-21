@@ -20,7 +20,6 @@
  *
  */
 #pragma once
-
 /**
  * Conditionals_LCD.h
  * Conditionals that need to be set before Configuration_adv.h or pins.h
@@ -56,21 +55,17 @@
   #define MINIPANEL
 
 #elif ENABLED(YHCB2004)
-
   #define IS_ULTIPANEL 1
 
 #elif ENABLED(CARTESIO_UI)
-
-  #define DOGLCD
-  #define IS_ULTIPANEL 1
+#define DOGLCD
+#define IS_ULTIPANEL 1
 
 #elif EITHER(DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
-
   #define IS_DWIN_MARLINUI 1
   #define IS_ULTIPANEL 1
 
 #elif ENABLED(ZONESTAR_LCD)
-
   #define HAS_ADC_BUTTONS 1
   #define REPRAPWORLD_KEYPAD_MOVE_STEP 10.0
   #define ADC_KEY_NUM 8
@@ -96,15 +91,15 @@
   #define IS_U8GLIB_SSD1306
 
 #elif ENABLED(RADDS_DISPLAY)
-  #define IS_ULTIPANEL 1
-  #define ENCODER_PULSES_PER_STEP 2
+#define IS_ULTIPANEL 1
+#define ENCODER_PULSES_PER_STEP 2
 
 #elif ANY(miniVIKI, VIKI2, WYH_L12864, ELB_FULL_GRAPHIC_CONTROLLER, AZSMZ_12864)
 
   #define IS_DOGM_12864 1
 
   #define DOGLCD
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
 
   #if ENABLED(miniVIKI)
     #define IS_U8GLIB_ST7565_64128N 1
@@ -122,19 +117,19 @@
 #elif ENABLED(OLED_PANEL_TINYBOY2)
 
   #define IS_U8GLIB_SSD1306
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
 
 #elif ENABLED(RA_CONTROL_PANEL)
 
   #define LCD_I2C_TYPE_PCA8574
   #define LCD_I2C_ADDRESS 0x27   // I2C Address of the port expander
-  #define IS_ULTIPANEL 1
+#define IS_ULTIPANEL 1
 
 #elif ENABLED(REPRAPWORLD_GRAPHICAL_LCD)
 
   #define DOGLCD
   #define IS_U8GLIB_ST7920 1
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
 
 #elif ENABLED(MKS_12864OLED)
 
@@ -178,7 +173,7 @@
 
   #define FYSETC_MINI_12864
   #define DOGLCD
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
   #define LED_COLORS_REDUCE_GREEN
   #if ENABLED(PSU_CONTROL) && EITHER(FYSETC_MINI_12864_2_0, FYSETC_MINI_12864_2_1)
     #define LED_BACKLIGHT_TIMEOUT 10000
@@ -203,7 +198,6 @@
   #endif
 
 #elif ENABLED(ULTI_CONTROLLER)
-
   #define IS_ULTIPANEL 1
   #define U8GLIB_SSD1309
   #define LCD_RESET_PIN LCD_PINS_D6 //  This controller need a reset pin
@@ -222,7 +216,7 @@
 #elif EITHER(TFTGLCD_PANEL_SPI, TFTGLCD_PANEL_I2C)
 
   #define IS_TFTGLCD_PANEL 1
-  #define IS_ULTIPANEL 1                    // Note that IS_ULTIPANEL leads to HAS_WIRED_LCD
+    #define IS_ULTIPANEL 1                    // Note that IS_ULTIPANEL leads to HAS_WIRED_LCD
 
   #if ENABLED(SDSUPPORT) && DISABLED(LCD_PROGRESS_BAR)
     #define LCD_PROGRESS_BAR
@@ -328,7 +322,7 @@
 // Einstart OLED has Cardinal nav via pins defined in pins_EINSTART-S.h
 #if ENABLED(U8GLIB_SH1106_EINSTART)
   #define DOGLCD
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
 #endif
 
 // TFT Compatibility
@@ -364,7 +358,7 @@
 
 #if TFT_SCALED_DOGLCD
   #define DOGLCD
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
   #define DELAYED_BACKLIGHT_INIT
 #elif HAS_TFT_LVGL_UI
   #define DELAYED_BACKLIGHT_INIT
@@ -373,7 +367,7 @@
 // Color UI
 #if ENABLED(TFT_COLOR_UI)
   #define HAS_GRAPHICAL_TFT 1
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
 #endif
 
 /**
@@ -389,7 +383,7 @@
     #define LCD_I2C_TYPE_MCP23017 // I2C Character-based 12864 display
     #define LCD_I2C_ADDRESS 0x20  // I2C Address of the port expander
     #define LCD_USE_I2C_BUZZER    // Enable buzzer on LCD (optional)
-    #define IS_ULTIPANEL 1
+        #define IS_ULTIPANEL 1
   #endif
 
 #elif EITHER(LCD_SAINSMART_I2C_1602, LCD_SAINSMART_I2C_2004)
@@ -415,12 +409,12 @@
   #define LCD_I2C_TYPE_MCP23017
   #define LCD_I2C_ADDRESS 0x20 // I2C Address of the port expander
   #define LCD_USE_I2C_BUZZER   // Enable buzzer on LCD (requires LiquidTWI2 v1.2.3 or later)
-  #define IS_ULTIPANEL 1
+#define IS_ULTIPANEL 1
 
-  #define ENCODER_FEEDRATE_DEADZONE 4
+#define ENCODER_FEEDRATE_DEADZONE 4
 
-  #define STD_ENCODER_PULSES_PER_STEP 1
-  #define STD_ENCODER_STEPS_PER_MENU_ITEM 2
+#define STD_ENCODER_PULSES_PER_STEP 1
+#define STD_ENCODER_STEPS_PER_MENU_ITEM 2
 
 #elif ENABLED(G3D_PANEL)
 
@@ -459,10 +453,10 @@
 // https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/schematics#!shiftregister-connection
 #if ENABLED(FF_INTERFACEBOARD)
   #define SR_LCD_3W_NL    // Non latching 3 wire shift register
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
 #elif ENABLED(SAV_3DLCD)
   #define SR_LCD_2W_NL    // Non latching 2 wire shift register
-  #define IS_ULTIPANEL 1
+    #define IS_ULTIPANEL 1
 #elif ENABLED(ULTIPANEL)
   #define IS_ULTIPANEL 1
 #endif
@@ -470,6 +464,7 @@
 #if EITHER(IS_ULTIPANEL, ULTRA_LCD)
   #define IS_ULTRA_LCD 1
 #endif
+
 
 #if EITHER(IS_ULTIPANEL, REPRAPWORLD_KEYPAD)
   #define IS_NEWPANEL 1
@@ -519,12 +514,6 @@
   #define LCD_BRIGHTNESS_MAX 250
 #endif
 
-#if ENABLED(U8GLIB_T6963)
-#define DOGLCD
-#define HAS_WIRED_LCD 1
-#define HAS_MARLINUI_U8GLIB 1
-#endif
-
 #if IS_ULTRA_LCD
   #define HAS_WIRED_LCD 1
   #if ENABLED(DOGLCD)
@@ -553,6 +542,13 @@
 
 #if ANY(HAS_MARLINUI_U8GLIB, EXTENSIBLE_UI, HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL, IS_DWIN_MARLINUI, DWIN_CREALITY_LCD_JYERSUI)
   #define CAN_SHOW_REMAINING_TIME 1
+#endif
+
+// T6963C 128x64 parralel interface
+#if ENABLED(U8GLIB_T6963)
+  #define DOGLCD
+  #define HAS_WIRED_LCD 1
+  #define HAS_MARLINUI_U8GLIB 1
 #endif
 
 #if HAS_MARLINUI_U8GLIB
@@ -1387,6 +1383,7 @@
 #elif defined(TFT_1024x600_LTDC)
   #define HAS_UI_1024x600 1
 #endif
+
 #if ANY(HAS_UI_320x240, HAS_UI_480x320, HAS_UI_480x272)
   #define LCD_HEIGHT TERN(TOUCH_SCREEN, 6, 7)   // Fewer lines with touch buttons onscreen
 #elif HAS_UI_1024x600
