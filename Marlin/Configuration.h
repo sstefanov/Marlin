@@ -27,6 +27,10 @@
   */
 #pragma once
 
+/* definition to expand macro then apply to pragma message */
+#define VALUE_TO_STRING(x) #x
+#define VALUE(x) VALUE_TO_STRING(x)
+#define VAR_NAME_VALUE(var) #var "=" VALUE(var)
 /**
  * Configuration.h
  *
@@ -2215,8 +2219,6 @@
 //
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
-#define U8GLIB_T6963
-
 //
 // GT2560 (YHCB2004) LCD Display
 //
@@ -2368,6 +2370,11 @@
 //
 // NOTE: If the LCD is unresponsive you may need to reverse the plugs.
 //
+
+// T6963C 128X64
+#define U8GLIB_T6963
+#define HAS_DIGITAL_BUTTONS
+#define HAS_LCD_MENU
 
 //
 // RepRapDiscount FULL GRAPHIC Smart Controller
