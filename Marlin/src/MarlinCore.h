@@ -62,9 +62,9 @@ bool printingIsPaused();
 void startOrResumeJob();
 
 extern bool wait_for_heatup;
+extern bool wait_for_user;
 
 #if HAS_RESUME_CONTINUE
-  extern bool wait_for_user;
   void wait_for_user_response(millis_t ms=0, const bool no_sleep=false);
 #endif
 

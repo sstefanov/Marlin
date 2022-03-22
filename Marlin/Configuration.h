@@ -22,10 +22,20 @@
 
  /*
   * Stefan Stefanov 2022
-  * added 128x64 t6963 LCD display
+  * Printer Prusa Mendel modified
+  *
+  *
+  *
+  *
+  *
   *
   */
 #pragma once
+
+/* definition to expand macro then apply to pragma message */
+#define VALUE_TO_STRING(x) #x
+#define VALUE(x) VALUE_TO_STRING(x)
+#define VAR_NAME_VALUE(var) #var "=" VALUE(var)
 
 /**
  * Configuration.h
@@ -75,7 +85,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(S.Stefanov, default config)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -2216,6 +2226,8 @@
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 #define U8GLIB_T6963
+#define HAS_ENCODER_WHEEL 1
+//#define HAS_RESUME_CONTINUE 1
 
 //
 // GT2560 (YHCB2004) LCD Display
@@ -2654,6 +2666,7 @@
 #if ENABLED(EXTENSIBLE_UI)
   //#define EXTUI_LOCAL_BEEPER // Enables use of local Beeper pin with external display
 #endif
+
 
 //=============================================================================
 //=============================== Graphical TFTs ==============================

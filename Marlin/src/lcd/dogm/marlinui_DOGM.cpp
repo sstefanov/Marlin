@@ -263,7 +263,7 @@ bool MarlinUI::detected() { return true; }
 void MarlinUI::init_lcd() {
 
   static bool did_init_u8g = false;
-  if (!did_init_u8g) {
+    if (!did_init_u8g) {
     u8g.init(U8G_PARAM);
     did_init_u8g = true;
   }

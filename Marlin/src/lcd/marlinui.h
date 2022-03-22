@@ -37,11 +37,9 @@
 #if ENABLED(TOUCH_SCREEN_CALIBRATION)
   #include "tft_io/touch_calibration.h"
 #endif
-
 #if ANY(HAS_LCD_MENU, ULTIPANEL_FEEDMULTIPLY, SOFT_RESET_ON_KILL)
   #define HAS_ENCODER_ACTION 1
 #endif
-
 #if HAS_STATUS_MESSAGE
   #define START_OF_UTF8_CHAR(C) (((C) & 0xC0u) != 0x80U)
 #endif

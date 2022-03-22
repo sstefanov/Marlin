@@ -3150,6 +3150,7 @@ void MarlinSettings::reset() {
   postprocess();
 
   DEBUG_ECHO_MSG("Hardcoded Default Settings Loaded");
+
 }
 
 #if DISABLED(DISABLE_M503)

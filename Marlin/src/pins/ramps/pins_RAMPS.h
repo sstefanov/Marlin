@@ -519,21 +519,27 @@
     #define TFTGLCD_CS               EXP2_06_PIN
 // T6963
 // cs = 14, a0 = 15, wr = 17, rd = 18, reset = 16
-  #elif ENABLED(U8GLIB_T6963)
-    #define LCD_PINS_CS 45
-    #define LCD_PINS_CD 43
-    #define LCD_PINS_RD 32
-    #define LCD_PINS_WR 47
-    #define LCD_PINS_RESET 41
-    #define LCD_PINS_D0 39
-    #define LCD_PINS_D1 37
-    #define LCD_PINS_D2 35
-    #define LCD_PINS_D3 33
-    #define LCD_PINS_D4 31
-    #define LCD_PINS_D5 29
-    #define LCD_PINS_D6 27
-    #define LCD_PINS_D7 25
+#elif ENABLED(U8GLIB_T6963)
+    #define LCD_PINS_CS                       45
+    #define LCD_PINS_CD                       43
+    #define LCD_PINS_RD                       32
+    #define LCD_PINS_WR                       47
+    #define LCD_PINS_RESET                    41
+    #define LCD_PINS_D0                       39
+    #define LCD_PINS_D1                       37
+    #define LCD_PINS_D2                       35
+    #define LCD_PINS_D3                       33
+    #define LCD_PINS_D4                       31
+    #define LCD_PINS_D5                       29
+    #define LCD_PINS_D6                       27
+    #define LCD_PINS_D7                       25
 
+// encoder
+#if HAS_ENCODER_WHEEL
+#define BTN_EN1 16
+#define BTN_EN2 17
+#define BTN_ENC 23
+#endif // RRD_SC
 #else
 
 #if ENABLED(CR10_STOCKDISPLAY)

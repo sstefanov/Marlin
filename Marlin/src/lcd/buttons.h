@@ -29,9 +29,10 @@
 #if HAS_ENCODER_WHEEL || ANY_BUTTON(ENC, BACK, UP, DWN, LFT, RT)
   #define HAS_DIGITAL_BUTTONS 1
 #endif
-#if !HAS_ADC_BUTTONS && (IS_RRW_KEYPAD || (HAS_WIRED_LCD && !IS_NEWPANEL))
-  #define HAS_SHIFT_ENCODER 1
-#endif
+
+//#if !HAS_ADC_BUTTONS && (IS_RRW_KEYPAD || (HAS_WIRED_LCD && !IS_NEWPANEL))
+//  #define HAS_SHIFT_ENCODER 1
+//#endif
 
 // I2C buttons must be read in the main thread
 #if ANY(LCD_I2C_VIKI, LCD_I2C_PANELOLU2, IS_TFTGLCD_PANEL)

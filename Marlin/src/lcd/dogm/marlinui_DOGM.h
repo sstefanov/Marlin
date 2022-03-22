@@ -206,13 +206,14 @@
   #else
     #define U8G_PARAM -1, -1
   #endif
+
 // T6963
+// S.Stefanov
 #elif ENABLED(U8GLIB_T6963)
   #define U8G_CLASS U8GLIB_T6963_128X64_HAL
-// d0, d1, d2, d3, d4, d5, d6, d7, cs, a0, wr, rd, reset
+  // d0, d1, d2, d3, d4, d5, d6, d7, cs, a0, wr, rd, reset
   #define U8G_PARAM LCD_PINS_D0, LCD_PINS_D1, LCD_PINS_D2, LCD_PINS_D3, LCD_PINS_D4, LCD_PINS_D5, LCD_PINS_D6, LCD_PINS_D7, LCD_PINS_CS, LCD_PINS_CD, LCD_PINS_RD, LCD_PINS_WR, LCD_PINS_RESET
-
-#else
+  #else
 
   #if ENABLED(ALTERNATIVE_LCD)
     #define U8G_CLASS U8GLIB_DOGM128                            // 8 stripes (HW-SPI)

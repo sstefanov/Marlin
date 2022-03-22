@@ -393,8 +393,7 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
   #endif // HAS_LCD_MENU
 
   void MarlinUI::init() {
-
-    init_lcd();
+      init_lcd();
 
     #if HAS_DIGITAL_BUTTONS
       #if BUTTON_EXISTS(EN1)
@@ -1235,27 +1234,30 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
     void MarlinUI::update_buttons() {
       const millis_t now = millis();
       if (ELAPSED(now, next_button_update_ms)) {
-
         #if HAS_DIGITAL_BUTTONS
 
           #if ANY_BUTTON(EN1, EN2, ENC, BACK)
 
-            uint8_t newbutton = 0;
-            if (BUTTON_PRESSED(EN1))                 newbutton |= EN_A;
-            if (BUTTON_PRESSED(EN2))                 newbutton |= EN_B;
-            if (can_encode() && BUTTON_PRESSED(ENC)) newbutton |= EN_C;
-            if (BUTTON_PRESSED(BACK))                newbutton |= EN_D;
+          uint8_t newbutton = 0;
+          if (BUTTON_PRESSED(EN1))
+              newbutton |= EN_A;
+          if (BUTTON_PRESSED(EN2))
+              newbutton |= EN_B;
+          if (can_encode() && BUTTON_PRESSED(ENC))
+              newbutton |= EN_C;
+          if (BUTTON_PRESSED(BACK))
+              newbutton |= EN_D;
 
           #else
 
-            constexpr uint8_t newbutton = 0;
+          constexpr uint8_t newbutton = 0;
 
           #endif
 
-          //
-          // Directional buttons
-          //
-          #if ANY_BUTTON(UP, DWN, LFT, RT)
+    //
+    // Directional buttons
+    //
+        #if ANY_BUTTON(UP, DWN, LFT, RT)
 
             const int8_t pulses = epps * encoderDirection;
 
@@ -1343,6 +1345,9 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
             external_encoder();
           #endif
           lastEncoderBits = enc;
+//          SERIAL_ECHOLNPGM("lastEncoderBits=",lastEncoderBits);
+//          SERIAL_ECHOLNPGM("newbutton=",newbutton);
+
         }
 
       #endif // HAS_ENCODER_WHEEL
