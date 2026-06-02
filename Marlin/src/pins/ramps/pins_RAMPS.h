@@ -641,6 +641,67 @@
 
     #define TFTGLCD_CS               EXP2_05_PIN
 
+  #elif ENABLED(U8GLIB_T6963)
+
+    // T6963 128x64 parallel 8-bit graphical LCD on RAMPS (AUX pins).
+    // Each pin is overridable from a board-specific pins file before this header is included.
+    #ifndef LCD_PINS_CS
+      #define LCD_PINS_CS                     45
+    #endif
+    #ifndef LCD_PINS_CD
+      #define LCD_PINS_CD                     43
+    #endif
+    #ifndef LCD_PINS_RD
+      #define LCD_PINS_RD                     32
+    #endif
+    #ifndef LCD_PINS_WR
+      #define LCD_PINS_WR                     47
+    #endif
+    #ifndef LCD_PINS_RESET
+      #define LCD_PINS_RESET                  41
+    #endif
+    #ifndef LCD_PINS_D0
+      #define LCD_PINS_D0                     39
+    #endif
+    #ifndef LCD_PINS_D1
+      #define LCD_PINS_D1                     37
+    #endif
+    #ifndef LCD_PINS_D2
+      #define LCD_PINS_D2                     35
+    #endif
+    #ifndef LCD_PINS_D3
+      #define LCD_PINS_D3                     33
+    #endif
+    #ifndef LCD_PINS_D4
+      #define LCD_PINS_D4                     31
+    #endif
+    #ifndef LCD_PINS_D5
+      #define LCD_PINS_D5                     29
+    #endif
+    #ifndef LCD_PINS_D6
+      #define LCD_PINS_D6                     27
+    #endif
+    #ifndef LCD_PINS_D7
+      #define LCD_PINS_D7                     25
+    #endif
+
+    // Encoder on AUX-1 by default. Pins 16/17 are TX2/RX2 on Mega2560:
+    // disable SERIAL_PORT/SERIAL_PORT_2 == 2, or override these pins, when
+    // using the T6963 encoder defaults below.
+    #if (SERIAL_PORT == 2) || (defined(SERIAL_PORT_2) && SERIAL_PORT_2 == 2)
+      #error "U8GLIB_T6963 default encoder pins on RAMPS conflict with Serial2 (pins 16/17). Choose another SERIAL_PORT[_2] or override BTN_EN1/BTN_EN2."
+    #endif
+
+    #ifndef BTN_EN1
+      #define BTN_EN1                         16
+    #endif
+    #ifndef BTN_EN2
+      #define BTN_EN2                         17
+    #endif
+    #ifndef BTN_ENC
+      #define BTN_ENC                         23
+    #endif
+
   #else
 
     #if ENABLED(CR10_STOCKDISPLAY)

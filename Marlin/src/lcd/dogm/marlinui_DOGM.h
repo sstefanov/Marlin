@@ -218,6 +218,15 @@
     #define U8G_PARAM -1, -1
   #endif
 
+#elif ENABLED(U8GLIB_T6963)
+
+  // Generic T6963 128x64 parallel 8-bit graphical LCD
+  #define U8G_CLASS U8GLIB_T6963_128X64_HAL
+  // d0..d7, cs, a0, wr, rd, reset
+  #define U8G_PARAM LCD_PINS_D0, LCD_PINS_D1, LCD_PINS_D2, LCD_PINS_D3, \
+                    LCD_PINS_D4, LCD_PINS_D5, LCD_PINS_D6, LCD_PINS_D7, \
+                    LCD_PINS_CS, LCD_PINS_CD, LCD_PINS_WR, LCD_PINS_RD, LCD_PINS_RESET
+
 #else
 
   #if ENABLED(ALTERNATIVE_LCD)

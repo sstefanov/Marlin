@@ -827,6 +827,14 @@
   #define DOGLCD
 #endif
 
+// 128x64 T6963 parallel-bus graphical LCD
+#if ENABLED(U8GLIB_T6963)
+  #define HAS_WIRED_LCD 1
+  #define DOGLCD
+  #define IS_NEWPANEL 1
+  #define IS_ULTIPANEL 1
+#endif
+
 /**
  * SPI Ultipanels
  */

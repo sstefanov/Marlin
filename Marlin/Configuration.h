@@ -2610,6 +2610,13 @@
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 //
+// Generic T6963 128x64 parallel 8-bit graphical LCD.
+// Uses LCD_PINS_D0..D7, LCD_PINS_CS, LCD_PINS_CD, LCD_PINS_WR, LCD_PINS_RD, LCD_PINS_RESET
+// from the active pins file (e.g. RAMPS AUX header).
+//
+//#define U8GLIB_T6963
+
+//
 // GT2560 (YHCB2004) LCD Display
 //
 // Requires Testato, Koepel softwarewire library and
